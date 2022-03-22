@@ -69,35 +69,3 @@ namespace Tutorial.Controllers
     }
 }
 ```
-## SorkValidator
-This filter will check modelstate for you and return BadRequest if modelstate is invalid
-
-### How to use
-
-Add it on top of the method that needs modelvalidation like so:
-
-```cs
-namespace Tutorial.Controllers
-{
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TutorialController : ControllerBase
-    {
-        private readonly IRepo _db;
-
-        public TutorialController(IRepo db)
-        {
-            _db = db;
-        }
-
-        [HttpPost]
-        [SorkValidator]
-        public IActionResult Post(TutorialObjekt modelValidationNeeded)
-        {
-            var result = await _db.SaveExample(modelValidationNeeded);
-            
-            return Ok(result);
-        }
-    }
-}
-```
