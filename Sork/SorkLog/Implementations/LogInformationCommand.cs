@@ -17,7 +17,8 @@ namespace Sork.SorkLog.Implementations
         public void Execute(ResultExecutedContext context)
         {
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("route: {Route}, time: {Time}, statusCode: {StatusCode}",
+                _logger.LogInformation("trace: {Trace}, route: {Route}, time: {Time}, statusCode: {StatusCode}",
+                    context.HttpContext.TraceIdentifier,
                     context.RouteData,
                     DateTime.Now.ToUniversalTime(),
                     context.HttpContext.Response.StatusCode);
