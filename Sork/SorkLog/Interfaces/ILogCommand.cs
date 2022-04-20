@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Sork.SorkLog.Interfaces
 {
     internal interface ILogCommand
     {
-        public void Execute(ResultExecutedContext context);
+        public void Execute(HttpContext context);
     }
 }

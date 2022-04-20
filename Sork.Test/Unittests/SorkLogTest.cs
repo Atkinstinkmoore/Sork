@@ -97,9 +97,8 @@ namespace Sork.Test.Unittests
         public async Task GetLogCommand_status_200_returns_informationcommand()
         {
             var logger = new Mock<ILogger<SorkLogFilter>>();
-            var sut = new SorkLogFilter(logger.Object);
 
-            var response = sut.GetLogCommand(200);
+            var response = logger.Object.GetLogCommand(200);
 
             Assert.IsType<LogInformationCommand>(response);
         }
@@ -107,9 +106,8 @@ namespace Sork.Test.Unittests
         public async Task GetLogCommand_status_400_returns_warningcommand()
         {
             var logger = new Mock<ILogger<SorkLogFilter>>();
-            var sut = new SorkLogFilter(logger.Object);
-
-            var response = sut.GetLogCommand(400);
+            
+            var response = logger.Object.GetLogCommand(400);
 
             Assert.IsType<LogWarningCommand>(response);
         }
@@ -117,9 +115,8 @@ namespace Sork.Test.Unittests
         public async Task GetLogCommand_status_500_returns_errorcommand()
         {
             var logger = new Mock<ILogger<SorkLogFilter>>();
-            var sut = new SorkLogFilter(logger.Object);
-
-            var response = sut.GetLogCommand(500);
+           
+            var response = logger.Object.GetLogCommand(500);
 
             Assert.IsType<LogErrorCommand>(response);
         }
