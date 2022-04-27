@@ -1,5 +1,6 @@
 # Sork
-This package is meant to do the boring stuff for you.
+Final project for my education. <br>
+This package is meant to do boring generic logging for you.
 <br>
 
 ## SorkLog
@@ -12,19 +13,21 @@ It will log in accordance with the statuscode returned
 |3xx|Information|
 |4xx|Warning|
 |5xx|Error|
+<br>
 
 ```js
 { 
-    'route': 'RouteData',
-    'action': 'DisplayName',
-    'responseCode': 'StatusCode',
-    'timeOfCallUTC': 'DateTime.Now.UTC'
+    'trace': 'Trace',
+    'path': 'Route',
+    'time': 'DateTime.Now.UTC',
+    'statusCode': 'StatusCode'
 }
 ```
+<br>
 
-### How to use
+### How to use ``SorkLogFilter``
 
-add it to your startup
+inject ``SorkLogFilter`` in your startup
 ```cs
 namespace Tutorial
 {
@@ -32,7 +35,7 @@ namespace Tutorial
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<SorkLog>();
+            services.AddScoped<SorkLogFilter>();
         }
     }
 }
@@ -45,7 +48,7 @@ namespace Tutorial.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ServiceFilter(typeof(SorkLog))] // Either here for use with all methods
+    [ServiceFilter(typeof(SorkLogFilter))] // Either here for use with all methods
     public class TutorialController : ControllerBase
     {
         private readonly IRepo _db;
@@ -56,7 +59,7 @@ namespace Tutorial.Controllers
         }
 
         [HttpGet]
-        [ServiceFilter(typeof(SorkLog))] // Or here for method specific use
+        [ServiceFilter(typeof(SorkLogFilter))] // Or here for method specific use
         public IActionResult Get()
         {
             var result = await _db.GetExample();
@@ -69,3 +72,17 @@ namespace Tutorial.Controllers
     }
 }
 ```
+<br>
+
+### How to use ``SorkLogMiddelware``
+
+add the middleware in startup
+
+```cs
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        app.UseSorkLog();
+
+    }
+```
+<br>
