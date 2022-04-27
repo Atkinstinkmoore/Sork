@@ -1,0 +1,27 @@
+name: "Dotnet CI workflow"
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: "Tests"
+    runs-on: "ubuntu-latest"
+    steps:
+    - name: "Checkout"
+      uses: actions/checkout@v2
+
+    - name: "Install dotnet"
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: "5.x.x"
+
+    - name: "Restore packages"
+      run: dotnet restore
+
+    - name: "Build project"
+      run: dotnet build --no-restore --configuration Release
+    
+    - name: "Run Unit Tests"
+      run: dotnet test --configuration Release --no-restore --verbosity minimal
