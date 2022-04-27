@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: "Deploy"
+    name: "Tests"
     runs-on: "ubuntu-latest"
     steps:
     - name: "Checkout"
@@ -23,5 +23,5 @@ jobs:
     - name: "Build project"
       run: dotnet build --no-restore --configuration Release
     
-    - name: "Unit Tests"
+    - name: "Run Unit Tests"
       run: dotnet test --configuration Release --no-restore --verbosity minimal
