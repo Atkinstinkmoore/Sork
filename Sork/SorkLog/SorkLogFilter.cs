@@ -4,6 +4,10 @@ using Sork.SorkLog.Implementations;
 
 namespace Sork.SorkLog
 {
+    /// <summary>
+    /// Add logging on <c>Controller</c>-level or <c>Method</c>-level with <c>[ServiceFilter(typeof(SorkLog))]</c>
+    /// Requires injection in startup <c>services.AddScoped<SorkLog>()</c>
+    /// </summary>
     public class SorkLogFilter : ActionFilterAttribute
     {
         private readonly ILogger<SorkLogFilter> _logger;

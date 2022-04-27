@@ -25,7 +25,9 @@ namespace Sork.SorkLog
             _logger.GetLogCommand(code).Execute(context);
         }
     }
-
+    /// <summary>
+    /// Middleware for generic logging of all httprequests
+    /// </summary>
     public static class SorkLogMiddlewareExtensions
     {
         public static IApplicationBuilder UseSorkLog(this IApplicationBuilder builder)
