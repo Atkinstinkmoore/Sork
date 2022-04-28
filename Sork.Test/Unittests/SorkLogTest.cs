@@ -9,6 +9,7 @@ using Sork.SorkLog;
 using Sork.SorkLog.Core;
 using Sork.SorkLog.Implementations;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -27,11 +28,15 @@ namespace Sork.Test.Unittests
             
             actionResult.Object.Equals(actionResult.Object);
 
+            using Activity activity = new Activity("unitTest");
+            activity.Start();
+            
+
             var actionContext = new ActionContext
             {
                 HttpContext = httpContext,
                 RouteData = new RouteData(),
-                ActionDescriptor = new ActionDescriptor(),
+                ActionDescriptor = new ActionDescriptor()
             };
 
             actionContext.HttpContext.Response.StatusCode = 200;
@@ -47,6 +52,7 @@ namespace Sork.Test.Unittests
 
             var sut = new SorkLogFilter(logger.Object);
             sut.OnResultExecuted(context);
+            activity.Stop();
 
             Assert.Equal(2, logger.Invocations.Count);
             //logger.Verify(logger => logger.Log(
