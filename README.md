@@ -74,7 +74,7 @@ namespace Tutorial.Controllers
 ```
 <br>
 
-### How to use ``SorkLogMiddelware``
+### How to use ``SorkLogMiddleware``
 
 add the middleware in startup
 

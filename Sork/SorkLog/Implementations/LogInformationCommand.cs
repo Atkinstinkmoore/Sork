@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Sork.SorkLog.Interfaces;
 using System;
+using System.Diagnostics;
 
 namespace Sork.SorkLog.Implementations
 {
@@ -16,7 +17,7 @@ namespace Sork.SorkLog.Implementations
         {
             if (_logger.IsEnabled(LogLevel.Information))
                 _logger.LogInformation("trace: {Trace}, path: {Route}, time: {Time}, statusCode: {StatusCode}",
-                    context.TraceIdentifier,
+                    Activity.Current.TraceId,
                     context.Request.Path,
                     DateTime.Now.ToUniversalTime(),
                     context.Response.StatusCode);
