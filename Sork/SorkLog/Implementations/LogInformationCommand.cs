@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using Sork.SorkLog.Interfaces;
 using System;
-using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Sork.Test")]
 namespace Sork.SorkLog.Implementations
 {
     internal class LogInformationCommand : ILogCommand
