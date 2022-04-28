@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Sork.SorkLog;
+using Sork.SorkLog.Core;
 using Sork.SorkLog.Implementations;
 using System.Collections.Generic;
 using System.Threading.Tasks;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
-using Sork.SorkLog.Implementations;
+using Sork.SorkLog.Core;
 
 namespace Sork.SorkLog
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Sork.SorkLog.Implementations;
+using Sork.SorkLog.Core;
 using System.Threading.Tasks;
 
 namespace Sork.SorkLog

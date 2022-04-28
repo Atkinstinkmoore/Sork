@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Sork.SorkLog.Interfaces;
+using Sork.SorkLog.Implementations;
 
-namespace Sork.SorkLog.Implementations
+namespace Sork.SorkLog.Core
 {
     internal static class ILoggerExtension
     {
