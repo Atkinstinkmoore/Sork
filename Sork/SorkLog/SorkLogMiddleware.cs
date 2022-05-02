@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
-using Sork.SorkLog.Implementations;
+using Sork.SorkLog.Core;
 using System.Threading.Tasks;
 
 namespace Sork.SorkLog
@@ -21,6 +20,7 @@ namespace Sork.SorkLog
         public async Task Invoke(HttpContext context)
         {
             await _next(context);
+
             int code = context.Response.StatusCode;
             _logger.GetLogCommand(code).Execute(context);
         }

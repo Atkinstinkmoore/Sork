@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using Sork.SorkLog.Interfaces;
+using Sork.SorkLog.Models;
 using System;
-using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
-[assembly: InternalsVisibleTo("Sork.Test")]
 namespace Sork.SorkLog.Implementations
 {
     internal class LogInformationCommand : ILogCommand
@@ -18,11 +17,7 @@ namespace Sork.SorkLog.Implementations
         public void Execute(HttpContext context)
         {
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("trace: {Trace}, path: {Route}, time: {Time}, statusCode: {StatusCode}",
-                    context.TraceIdentifier,
-                    context.Request.Path,
-                    DateTime.Now.ToUniversalTime(),
-                    context.Response.StatusCode);
+                _logger.LogInformation(new LogMessage(Activity.Current.TraceId, context.Request.Path, DateTime.UtcNow, context.Response.StatusCode).ToString());
         }
 
     }
