@@ -16,12 +16,12 @@ It will log in accordance with the statuscode returned
 <br>
 
 ```js
-{ 
-    'trace': 'Trace',
-    'path': 'Route',
-    'time': 'DateTime.Now.UTC',
-    'statusCode': 'StatusCode'
-}
+ 
+'traceId': 'TraceId',
+'path': 'Path',
+'dateTimeUTC': 'DateTimeUTC',
+'statusCode': StatusCode"
+
 ```
 <br>
 
