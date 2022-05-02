@@ -19,9 +19,8 @@ namespace Sork.SorkLog
 
         public async Task Invoke(HttpContext context)
         {
-            context.AddTraceHeader();
-
             await _next(context);
+
             int code = context.Response.StatusCode;
             _logger.GetLogCommand(code).Execute(context);
         }

@@ -21,7 +21,6 @@ namespace Sork.SorkLog
         {
             base.OnActionExecuting(context);
 
-            context.HttpContext.AddTraceHeader();
         }
 
         public override void OnResultExecuted(ResultExecutedContext context)
