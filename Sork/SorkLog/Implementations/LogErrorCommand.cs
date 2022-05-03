@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Sork.SorkLog.Interfaces;
-using Sork.SorkLog.Models;
 using System;
 using System.Diagnostics;
 
@@ -17,7 +16,11 @@ namespace Sork.SorkLog.Implementations
         public void Execute(HttpContext context)
         {
             if (_logger.IsEnabled(LogLevel.Error))
-                _logger.LogError( new LogMessage(Activity.Current.TraceId, context.Request.Path, DateTime.UtcNow, context.Response.StatusCode).ToString());
+                _logger.LogError("traceId: {TraceId}, path: {Path}, dateTimeUTC: {DateTimeUTC}, statusCode: {StatusCode}",
+                    Activity.Current.TraceId,
+                    context.Request.Path,
+                    DateTime.UtcNow,
+                    context.Response.StatusCode);
         }
 
     }
