@@ -16,9 +16,10 @@ namespace Sork.SorkLog.Implementations
         public void Execute(HttpContext context)
         {
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("traceId: {TraceId}, path: {Path}, dateTimeUTC: {DateTimeUTC}, statusCode: {StatusCode}",
+                _logger.LogInformation("traceId: {TraceId}, path: {Path}, method: {Method}, dateTimeUTC: {DateTimeUTC}, statusCode: {StatusCode}",
                     Activity.Current.TraceId,
                     context.Request.Path,
+                    context.Request.Method,
                     DateTime.UtcNow,
                     context.Response.StatusCode);
         }
