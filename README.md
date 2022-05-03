@@ -17,10 +17,11 @@ It will log in accordance with the statuscode returned
 
 ```js
  
-'traceId': 'TraceId',
-'path': 'Path',
-'dateTimeUTC': 'DateTimeUTC',
-'statusCode': StatusCode"
+traceId: {TraceId},
+path: {Path},
+method: {Method},
+dateTimeUTC: {DateTimeUTC},
+statusCode: {StatusCode}"
 
 ```
 <br>
